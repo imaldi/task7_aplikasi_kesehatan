@@ -55,19 +55,19 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: <Widget>[
                 /// Categories
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  height: 70,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categories.length,
-                      itemBuilder: (context, index) {
-                        return CategoryCard(
-                          imageAssetUrl: categories[index].imageAssetUrl,
-                          categoryName: categories[index].categorieName,
-                        );
-                      }),
-                ),
+                // Container(
+                //   padding: EdgeInsets.symmetric(horizontal: 16),
+                //   height: 70,
+                //   child: ListView.builder(
+                //       scrollDirection: Axis.horizontal,
+                //       itemCount: categories.length,
+                //       itemBuilder: (context, index) {
+                //         return CategoryCard(
+                //           imageAssetUrl: categories[index].imageAssetUrl,
+                //           categoryName: categories[index].categorieName,
+                //         );
+                //       }),
+                // ),
 
                 /// News Article
                 Container(
