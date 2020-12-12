@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task7_aplikasi_kesehatan/views/article_view.dart';
 import 'package:task7_aplikasi_kesehatan/views/page_dictionary.dart';
 import 'package:task7_aplikasi_kesehatan/views/page_login.dart';
+import 'package:task7_aplikasi_kesehatan/views/page_profile.dart';
 
 Widget MyAppBar(){
   return AppBar(
@@ -51,7 +52,12 @@ Widget MyNavigationDrawer(BuildContext context){
       ListTile(
         title: Text('Profil'),
         trailing: Icon(Icons.person),
-        onTap: (){},
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute (
+              builder: (context) => ProfilePage()
+            )
+          );
+        },
       ),
       ListTile(
         title: Text('Log Out'),
@@ -132,7 +138,7 @@ class NewsTile extends StatelessWidget {
 }
 
 class WordTile extends StatelessWidget {
-  final int id;
+  final String id;
   final String kata, arti_kata;
   WordTile({this.id,this.kata,this.arti_kata});
   @override

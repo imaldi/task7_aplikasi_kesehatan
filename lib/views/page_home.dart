@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 // import 'package:news_app_api/views/categorie_news.dart';
 import 'package:task7_aplikasi_kesehatan/helper/widgets.dart';
 import 'package:task7_aplikasi_kesehatan/models/categorie_model.dart';
-import 'package:task7_aplikasi_kesehatan/views/categorie_news.dart';
 import '../helper/news.dart';
 
 class HomePage extends StatefulWidget {
