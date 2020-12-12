@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build( BuildContext context) {
     return Container (
       child: Center (
-        child: Image .asset( "images/splashscreen.gif" ),
+        child: Image.asset( "assets/icon/icon.png" ),
       ),
     );
   }

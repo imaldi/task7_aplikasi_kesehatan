@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:news_app_api/views/article_view.dart';
 import 'package:task7_aplikasi_kesehatan/views/article_view.dart';
+import 'package:task7_aplikasi_kesehatan/views/page_dictionary.dart';
+import 'package:task7_aplikasi_kesehatan/views/page_login.dart';
 
 Widget MyAppBar(){
   return AppBar(
@@ -20,6 +23,49 @@ Widget MyAppBar(){
     ),
     backgroundColor: Colors.transparent,
     elevation: 0.0,
+  );
+}
+
+Widget MyNavigationDrawer(BuildContext context){
+  return Drawer(
+    child: ListView(children: <Widget>[
+      ListTile(title: Text('Selamat Datang'),),
+      Divider(),
+      ListTile(
+        title: Text('Beranda'),
+        trailing: Icon(Icons.home),
+        onTap: (){},
+      ),
+      ListTile(
+        title: Text('Kamus'),
+        trailing: Icon(Icons.book),
+        onTap: (){
+          Navigator.of(context).pop();
+          // Navigator.of(context).pushNamed('/kamus');
+          Navigator.push(context, MaterialPageRoute (
+              builder: (context) => KamusKesehatan()
+          )
+          );
+        },
+      ),
+      ListTile(
+        title: Text('Profil'),
+        trailing: Icon(Icons.person),
+        onTap: (){},
+      ),
+      ListTile(
+        title: Text('Log Out'),
+        trailing: Icon(Icons.directions_run),
+        onTap: () async {
+          SharedPreferences preferences = await SharedPreferences.getInstance();
+          await preferences.clear();
+          Navigator.push(context, MaterialPageRoute (
+              builder: (context) => PageLogin()
+          )
+          );
+        },
+      ),
+    ],),
   );
 }
 
@@ -43,7 +89,6 @@ class NewsTile extends StatelessWidget {
           margin: EdgeInsets.only(bottom: 24),
           width: MediaQuery.of(context).size.width,
           child: Container(
-            child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
@@ -81,7 +126,60 @@ class NewsTile extends StatelessWidget {
                 ],
               ),
             ),
-          )),
+          ),
     );
   }
 }
+
+class WordTile extends StatelessWidget {
+  final int id;
+  final String kata, arti_kata;
+  WordTile({this.id,this.kata,this.arti_kata});
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        // Navigator.push(context, MaterialPageRoute(
+        //     builder: (context) => ArticleView(
+        //       postUrl: posturl,
+        //     )
+        // ));
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 24),
+        width: MediaQuery.of(context).size.width,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          alignment: Alignment.bottomCenter,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(6),bottomLeft:  Radius.circular(6))
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+
+              Text(
+                kata,
+                maxLines: 2,
+                style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              // Text(
+              //   desc,
+              //   maxLines: 2,
+              //   style: TextStyle(color: Colors.black54, fontSize: 14),
+              // )
+            ],
+          ),
+        ),
+      ),
+    );;
+  }
+}
+
