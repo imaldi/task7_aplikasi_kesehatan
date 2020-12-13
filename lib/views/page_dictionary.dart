@@ -48,7 +48,7 @@ class _KamusKesehatanState extends State<KamusKesehatan> {
                       physics: ClampingScrollPhysics(),
                       itemBuilder: (context, index) {
                         return WordTile(
-                          id: wordslist[index].id ?? "0",
+                          // id: wordslist[index].id ?? "0",
                           kata: wordslist[index].kata ?? "-",
                           arti_kata: wordslist[index].arti_kata ?? "-",
                         );

@@ -19,6 +19,7 @@ class _ArticleViewState extends State<ArticleView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

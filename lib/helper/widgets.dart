@@ -5,9 +5,11 @@ import 'package:task7_aplikasi_kesehatan/views/article_view.dart';
 import 'package:task7_aplikasi_kesehatan/views/page_dictionary.dart';
 import 'package:task7_aplikasi_kesehatan/views/page_login.dart';
 import 'package:task7_aplikasi_kesehatan/views/page_profile.dart';
+import 'package:task7_aplikasi_kesehatan/views/word_detail_view.dart';
 
 Widget MyAppBar(){
   return AppBar(
+    iconTheme: IconThemeData(color: Colors.black),
     title: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -138,18 +140,20 @@ class NewsTile extends StatelessWidget {
 }
 
 class WordTile extends StatelessWidget {
-  final String id;
+  // final String id;
   final String kata, arti_kata;
-  WordTile({this.id,this.kata,this.arti_kata});
+  WordTile({this.kata,this.arti_kata});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        // Navigator.push(context, MaterialPageRoute(
-        //     builder: (context) => ArticleView(
-        //       postUrl: posturl,
-        //     )
-        // ));
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => WordDetailView(
+                kata : kata,
+                arti_kata: arti_kata
+              // postUrl: posturl,
+            )
+        ));
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 24),
@@ -174,7 +178,7 @@ class WordTile extends StatelessWidget {
                     fontWeight: FontWeight.w500),
               ),
               SizedBox(
-                height: 4,
+                height: 10,
               ),
               // Text(
               //   desc,
